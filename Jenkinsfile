@@ -9,7 +9,7 @@ pipeline {
       steps {
         script {
           FAILED_STAGE=env.STAGE_NAME
-          sh './mvnw clean package'
+          sh 'mvn clean package'
         }
       }
     }
@@ -19,7 +19,7 @@ pipeline {
         script {
           FAILED_STAGE=env.STAGE_NAME
           sh """
-            docker build -t jobin589/spring-petclinic:${env.BUILD_NUMBER} .
+            docker build -t jobin589/simple-java-app:${env.BUILD_NUMBER} .
             docker push myimage
           """
         }
